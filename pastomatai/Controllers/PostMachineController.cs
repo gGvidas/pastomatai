@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using pastomatai.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace pastomatai.Controllers
 {
@@ -14,9 +15,19 @@ namespace pastomatai.Controllers
         {
             this.context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            return View(context.PostMachine.ToList());
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var postMachineList = context.PostMachine.Include(postMachine => postMachine.FkAddressidAddressNavigation)
+                    .Include(postMachine => postMachine.FkLoggedInUseridEndUser1Navigation)
+                    .Include(postMachine => postMachine.FkLoggedInUseridEndUserNavigation)
+                    .Where(postMachine => postMachine.FkAddressidAddressNavigation.City.Contains(searchString));
+                return View(postMachineList);
+            }
+            return View(context.PostMachine.Include(postMachine => postMachine.FkAddressidAddressNavigation)
+                    .Include(postMachine => postMachine.FkLoggedInUseridEndUser1Navigation)
+                    .Include(postMachine => postMachine.FkLoggedInUseridEndUserNavigation).ToList());
         }
     }
 }
