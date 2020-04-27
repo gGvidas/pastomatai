@@ -1,0 +1,59 @@
+﻿@model IEnumerable<pastomatai.Models.PostMachine>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TurnedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostMachineState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkAddressidAddressNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkLoggedInUseridEndUser1Navigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkLoggedInUseridEndUserNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TurnedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostMachineState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkAddressidAddressNavigation.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUser1Navigation.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUserNavigation.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPostMachine">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPostMachine">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPostMachine">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
