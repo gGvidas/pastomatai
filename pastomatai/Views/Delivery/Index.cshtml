@@ -1,0 +1,91 @@
+﻿@model IEnumerable<pastomatai.Models.Package>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div>
+    <p>
+        <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="false">Place in terminal</a>
+        |
+        <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="true">Place in post machine</a>
+        |
+        <a asp-action="Index" asp-route-state="InTerminal" asp-route-hasterminal="true">Take from terminal</a>
+        |
+        <a asp-action="Index" asp-route-state="WaitsForCourier" asp-route-hasterminal="false">Take from post machine</a>
+        |
+        <a asp-action="Index">Back to full list</a>
+    </p>
+</div>
+
+
+
+<form asp-controller="Delivery" asp-action="UpdateStatesAll" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Selected
+                </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PutInTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CollectionTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Size)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PackageState)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FkEndUseridEndUserNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FkLoggedInUseridEndUserNavigation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FkTerminalidTerminalNavigation)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input name="IdsToUpdate" type="checkbox" id="@item.IdPackage" value="@item.IdPackage" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PutInTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CollectionTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Size)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageState)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FkEndUseridEndUserNavigation.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUserNavigation.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FkTerminalidTerminalNavigation.PhoneNumber)
+                        </td>
+                        <td>
+                            <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Update state</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    <input type="submit" value=" Update selected" /><br>
+</form>

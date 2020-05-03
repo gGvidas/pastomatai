@@ -1,0 +1,66 @@
+﻿@model pastomatai.Models.Package
+
+@{
+    ViewData["Title"] = "UpdateState";
+}
+
+<h1>UpdateState</h1>
+
+<h4>Package</h4>
+
+<h5> Do you want to update this package's state?</h5>
+
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.PutInTime)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.PutInTime)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.CollectionTime)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.CollectionTime)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Size)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Size)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.PackageState)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.PackageState)
+    </dd>
+</dl>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateState">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PutInTime" />
+            <input type="hidden" asp-for="CollectionTime" />
+            <input type="hidden" asp-for="Size" />
+            <input type="hidden" asp-for="PackageState" />
+            <input type="hidden" asp-for="IdPackage" />
+            <input type="hidden" asp-for="FkLoggedInUseridEndUser" />
+            <input type="hidden" asp-for="FkTerminalidTerminal" />
+            <input type="hidden" asp-for="FkEndUseridEndUser" />
+            <div class="form-group">
+                <input type="submit" value="Confirm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <p>
+        <a href="javascript:void(0);" onclick="history.go(-1);">Back</a>
+    </p>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
