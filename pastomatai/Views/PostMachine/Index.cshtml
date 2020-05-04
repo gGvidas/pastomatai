@@ -58,8 +58,10 @@
                 @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUserNavigation.Email)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPostMachine">Edit</a> |
+                <a asp-action="Activate" asp-route-id="@item.IdPostMachine">@(item.TurnedOn ? "Turn off" : "Turn on")</a> |
                 <a asp-action="Details" asp-route-id="@item.IdPostMachine">Details</a> |
+                <a asp-action="Serve" asp-route-id="@item.IdPostMachine">Serve</a>
+                <a asp-action="Edit" asp-route-id="@item.IdPostMachine">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdPostMachine">Delete</a>
             </td>
         </tr>
