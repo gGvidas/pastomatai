@@ -14,6 +14,8 @@ namespace pastomatai.Models
         public DateTime? CollectionTime { get; set; }
         public string Size { get; set; }
         public string PackageState { get; set; }
+        public string Email { get; set; }
+        public string ReceiversNumber { get; set; }
         public int IdPackage { get; set; }
         public int? FkLoggedInUseridEndUser { get; set; }
         public int? FkTerminalidTerminal { get; set; }

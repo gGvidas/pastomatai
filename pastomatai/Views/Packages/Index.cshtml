@@ -1,0 +1,86 @@
+﻿@model IEnumerable<pastomatai.Models.Package>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">New package</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by package state: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>Created</label>
+            </th>
+            <th>
+                <label>Collected</label>
+            </th>
+            <th>
+                <label>Size</label>
+            </th>
+            <th>
+                <label>Package state</label>
+            </th>
+            <th>
+                <label>Receivers email</label>
+            </th>
+            <th>
+                <label>Receivers number</label>
+            </th>
+            <th>
+                <label>Senders email</label>
+            </th>
+            <th>
+                <label>Terminal code</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PutInTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CollectionTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiversNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUserNavigation.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkTerminalidTerminalNavigation.PhoneNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPackage">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPackage">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPackage">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
