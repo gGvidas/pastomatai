@@ -7,6 +7,8 @@
 <h1>Index</h1>
 <div>
     <p>
+        <h4>Kurjeriui</h4>
+
         <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="false">Place in terminal</a>
         |
         <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="true">Place in post machine</a>
@@ -16,6 +18,13 @@
         <a asp-action="Index" asp-route-state="WaitsForCourier" asp-route-hasterminal="false">Take from post machine</a>
         |
         <a asp-action="Index">Back to full list</a>
+
+        <h4>Paprastam naudotojui</h4>
+        <a asp-action="Index" asp-route-state="Created" asp-route-hasterminal="false">Activate Package</a>
+        |
+        <a asp-action="Index" asp-route-state="Activated" asp-route-hasterminal="false">Place in post machine</a>
+        |
+        <a asp-action="Index" asp-route-state="WaitsForPickup" asp-route-hasterminal="false">Take from post machine</a>
     </p>
 </div>
 

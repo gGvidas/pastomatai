@@ -77,14 +77,23 @@ namespace pastomatai.Controllers
                     { package.PackageState = "EnRoute"; }
                     else if (package.PackageState.Contains("InTerminal"))
                     { package.PackageState = "EnRoute"; }
-                    else if (package.PackageState.Contains("WaitsForPickup"))
-                    { package.PackageState = "Delivered"; }
+                    //else if (package.PackageState.Contains("WaitsForPickup"))
+                    //{ package.PackageState = "Delivered"; }
                     else if (package.PackageState.Contains("EnRoute") && package.FkTerminalidTerminal.HasValue)
                     { package.PackageState = "WaitsForPickup"; }
                     else if (package.PackageState.Contains("EnRoute") && !(package.FkTerminalidTerminal.HasValue))
                     { package.PackageState = "InTerminal"; }
 
-                        _context.Update(package);
+                    //Paprastam useriui
+
+                    if (package.PackageState.Contains("Created"))
+                    { package.PackageState = "Activated"; }
+                    else if (package.PackageState.Contains("Activated"))
+                    { package.PackageState = "WaitsForCourier"; }
+                    else if (package.PackageState.Contains("WaitsForPickup"))
+                    { package.PackageState = "Delivered"; }
+
+                    _context.Update(package);
                         await _context.SaveChangesAsync();
                     }
                 catch (DbUpdateConcurrencyException)
@@ -117,20 +126,25 @@ namespace pastomatai.Controllers
 
             foreach (var package in packages)
             {
-                //take from post machine
                 if (package.PackageState.Contains("WaitsForCourier"))
                 { package.PackageState = "EnRoute"; }
-                //take from terminal
                 else if (package.PackageState.Contains("InTerminal"))
                 { package.PackageState = "EnRoute"; }
-                else if (package.PackageState.Contains("WaitsForPickup"))
-                { package.PackageState = "Delivered"; }
-                //place in post machine
+                //else if (package.PackageState.Contains("WaitsForPickup"))
+                //{ package.PackageState = "Delivered"; }
                 else if (package.PackageState.Contains("EnRoute") && package.FkTerminalidTerminal.HasValue)
                 { package.PackageState = "WaitsForPickup"; }
-                //place in terminal
                 else if (package.PackageState.Contains("EnRoute") && !(package.FkTerminalidTerminal.HasValue))
                 { package.PackageState = "InTerminal"; }
+
+                //Paprastam useriui
+
+                if (package.PackageState.Contains("Created"))
+                { package.PackageState = "Activated"; }
+                else if (package.PackageState.Contains("Activated"))
+                { package.PackageState = "WaitsForCourier"; }
+                else if (package.PackageState.Contains("WaitsForPickup"))
+                { package.PackageState = "Delivered"; }
 
                 _context.Update(package);           
             }
