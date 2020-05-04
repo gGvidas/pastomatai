@@ -156,5 +156,22 @@ namespace pastomatai.Controllers
         {
             return _context.Package.Any(e => e.IdPackage == id);
         }
+        public async Task<IActionResult> ConfirmDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var package = await _context.Package.FindAsync(id);
+            if (package == null)
+            {
+                return NotFound();
+            }
+            ViewData["FkEndUseridEndUser"] = new SelectList(_context.EndUser, "IdEndUser", "PhoneNumber", package.FkEndUseridEndUser);
+            ViewData["FkLoggedInUseridEndUser"] = new SelectList(_context.LoggedInUser, "IdEndUser", "Email", package.FkLoggedInUseridEndUser);
+            ViewData["FkTerminalidTerminal"] = new SelectList(_context.Terminal, "IdTerminal", "PhoneNumber", package.FkTerminalidTerminal);
+            return View(package);
+        }
     }
 }
