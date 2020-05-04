@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace pastomatai.Models
 {
@@ -9,6 +10,7 @@ namespace pastomatai.Models
         {
             PostMachineBox = new HashSet<PostMachineBox>();
         }
+
 
         public bool TurnedOn { get; set; }
         public string PostMachineState { get; set; }
