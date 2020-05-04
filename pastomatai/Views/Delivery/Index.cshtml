@@ -28,7 +28,9 @@
     </p>
 </div>
 
-
+@{ 
+    string notshow = null;
+}
 
 <form asp-controller="Delivery" asp-action="UpdateStatesAll" method="post">
     <table class="table">
@@ -37,64 +39,91 @@
                 <th>
                     Selected
                 </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PutInTime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CollectionTime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Size)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PackageState)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FkEndUseridEndUserNavigation)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FkLoggedInUseridEndUserNavigation)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FkTerminalidTerminalNavigation)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <input name="IdsToUpdate" type="checkbox" id="@item.IdPackage" value="@item.IdPackage" />
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PutInTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CollectionTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Size)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PackageState)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FkEndUseridEndUserNavigation.PhoneNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUserNavigation.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FkTerminalidTerminalNavigation.PhoneNumber)
-                        </td>
-                        <td>
+                <th>
+                    @Html.DisplayNameFor(model => model.PutInTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CollectionTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PackageState)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FkEndUseridEndUserNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FkLoggedInUseridEndUserNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FkTerminalidTerminalNavigation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input name="IdsToUpdate" type="checkbox" id="@item.IdPackage" value="@item.IdPackage" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PutInTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CollectionTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackageState)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FkEndUseridEndUserNavigation.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FkLoggedInUseridEndUserNavigation.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FkTerminalidTerminalNavigation.PhoneNumber)
+                    </td>
+                    <td>
+                        @if (item.PackageState.Contains("Created"))
+                        {
+                            notshow = item.PackageState;
+                            <div>
+                                <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Activate package</a>
+                            </div>
+
+                        }
+                        else if (item.PackageState.Contains("WaitsForPickup"))
+                        {
+                            notshow = item.PackageState;
+                            <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Withdraw package</a>
+                        }
+                        else if (item.PackageState.Contains("Activated"))
+                        {
+                            notshow = item.PackageState;
+                            <a asp-action="ConfirmDetails" asp-route-id="@item.IdPackage">Place package into post machine</a>
+                        }
+                        else
+                        {
                             <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Update state</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    <input type="submit" value=" Update selected" /><br>
+                        }
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (String.IsNullOrEmpty(notshow))
+    {
+        <input type="submit" value=" Update selected" /><br>
+    }
+
 </form>
