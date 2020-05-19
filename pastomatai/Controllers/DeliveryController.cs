@@ -73,27 +73,41 @@ namespace pastomatai.Controllers
             {
                 try
                 {
+                    // take out from post machine
                     if (package.PackageState.Contains("WaitsForCourier"))
                     { package.PackageState = "EnRoute"; }
+                    // take out from terminal
                     else if (package.PackageState.Contains("InTerminal"))
                     { package.PackageState = "EnRoute"; }
+                    // place in post machine
                     else if (package.PackageState.Contains("EnRoute") && package.FkTerminalidTerminal.HasValue)
-                    { 
+                    {
                         package.PackageState = "WaitsForPickup";
                         // TODO: package is put into post machine box with id = 666 <-- change it later
                         package.PostMachineBox = _context.PostMachineBox.Find(666);
                     }
+                    // place in terminal
                     else if (package.PackageState.Contains("EnRoute") && !package.FkTerminalidTerminal.HasValue)
-                    { package.PackageState = "InTerminal"; }
+                    {
+                        package.PackageState = "InTerminal";
+                        // TODO: package is into terminal with id = 20 <-- change it later
+                        package.FkTerminalidTerminal = 20;
+                    }
 
                     //Paprastam useriui
 
                     if (package.PackageState.Contains("Created"))
                     { package.PackageState = "Activated"; }
                     else if (package.PackageState.Contains("Activated"))
-                    { package.PackageState = "WaitsForCourier"; }
+                    { 
+                        package.PackageState = "WaitsForCourier";
+                        package.PostMachineBox = _context.PostMachineBox.Find(666);
+                    }
                     else if (package.PackageState.Contains("WaitsForPickup"))
-                    { package.PackageState = "Delivered"; }
+                    { 
+                        package.PackageState = "Delivered";
+                        package.PostMachineBox = null;
+                    }                   
 
                     _context.Update(package);
                         await _context.SaveChangesAsync();
@@ -138,7 +152,8 @@ namespace pastomatai.Controllers
                 else if (package.PackageState.Contains("EnRoute") && package.FkTerminalidTerminal.HasValue)
                 { 
                     package.PackageState = "WaitsForPickup";
-                    package.PostMachineBox = _context.PostMachineBox.Find(getEmptyByTerminal(currentTerminal));
+                    var postbox = getEmptyByTerminal(currentTerminal);
+                    package.PostMachineBox = postbox;
                     if (package.PostMachineBox == null)
                     {
                         // post machine is full 
@@ -147,16 +162,6 @@ namespace pastomatai.Controllers
                 }
                 else if (package.PackageState.Contains("EnRoute") && !(package.FkTerminalidTerminal.HasValue))
                 { package.PackageState = "InTerminal"; }
-
-                //Paprastam useriui
-
-                if (package.PackageState.Contains("Created"))
-                { package.PackageState = "Activated"; }
-                else if (package.PackageState.Contains("Activated"))
-                { package.PackageState = "WaitsForCourier"; }
-                else if (package.PackageState.Contains("WaitsForPickup"))
-                { package.PackageState = "Delivered"; }
-
                 _context.Update(package);           
             }
              _context.SaveChangesAsync();
