@@ -9678,6 +9678,7 @@
       "Microsoft.AspNet.Mvc >= 5.2.7",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.AspNetCore.Mvc.Razor >= 2.2.0",
+      "Microsoft.AspNetCore.Mvc.ViewFeatures >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.0.0",
@@ -9687,23 +9688,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tom\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\imsow\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj",
+      "projectUniqueName": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj",
       "projectName": "pastomatai",
-      "projectPath": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj",
-      "packagesPath": "C:\\Users\\Tom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\obj\\",
+      "projectPath": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj",
+      "packagesPath": "C:\\Users\\imsow\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Tom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\imsow\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9736,6 +9733,10 @@
             "version": "[2.2.5, )"
           },
           "Microsoft.AspNetCore.Mvc.Razor": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": {
             "target": "Package",
             "version": "[2.2.0, )"
           },

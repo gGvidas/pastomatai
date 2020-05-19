@@ -24,7 +24,7 @@
         |
         <a asp-action="Index" asp-route-state="Activated" asp-route-hasterminal="false">Place in post machine</a>
         |
-        <a asp-action="Index" asp-route-state="WaitsForPickup" asp-route-hasterminal="false">Take from post machine</a>
+        <a asp-action="Index" asp-route-state="WaitsForPickup" asp-route-hasterminal="true">Take from post machine</a>
     </p>
 </div>
 
@@ -103,7 +103,7 @@
                         else if (item.PackageState.Contains("WaitsForPickup"))
                         {
                             notshow = item.PackageState;
-                            <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Withdraw package</a>
+                            <a asp-action="PinConfirmation" asp-route-id="@item.IdPackage">Withdraw package</a>
                         }
                         else if (item.PackageState.Contains("Activated"))
                         {
