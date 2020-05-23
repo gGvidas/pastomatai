@@ -5,34 +5,75 @@
 }
 
 <h1>Index</h1>
+
+<h4> Actions within terminals:</h4>
+
 <div>
-    <p>
-        <h4>Kurjeriui</h4>
 
-        <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="false">Place in terminal</a>
-        |
-        <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="true">Place in post machine</a>
-        |
-        <a asp-action="Index" asp-route-state="InTerminal" asp-route-hasterminal="true">Take from terminal</a>
-        |
-        <a asp-action="Index" asp-route-state="WaitsForCourier" asp-route-hasterminal="false">Take from post machine</a>
-        |
-        <a asp-action="Index">Back to full list</a>
+    <form asp-action="Index" method="get">
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td>
+                        <select class="form-control" name="TerminalId" asp-items="ViewBag.FkTerminalidTerminal">
+                            <option value="" disabled selected>@ViewData["TerminalFilter"]</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </td>
+                </tr>
+            </table>       
+        </div>
+    </form>
 
-        <h4>Paprastam naudotojui</h4>
-        <a asp-action="Index" asp-route-state="Created" asp-route-hasterminal="false">Activate Package</a>
-        |
-        <a asp-action="Index" asp-route-state="Activated" asp-route-hasterminal="false">Place in post machine</a>
-        |
-        <a asp-action="Index" asp-route-state="WaitsForPickup" asp-route-hasterminal="true">Take from post machine</a>
-    </p>
+    <h5>Courier</h5>
+    <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="false" asp-route-terminalId="@ViewData["TerminalFilter"]">Place in terminal</a> |
+    <a asp-action="Index" asp-route-state="InTerminal" asp-route-hasterminal="true" asp-route-terminalId="@ViewData["TerminalFilter"]">Take from terminal</a>
+</div>
+<br />
+<div>
+    <h4>Actions within post machines:  </h4>
+
+    <form asp-action="Index" method="get">
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td>
+                        <select class="form-control" name="PostMachineId" asp-items="ViewBag.PostMachines">
+                            <option value="" disabled selected>@ViewData["PostMachineFilter"]</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="submit" value="Submit" class="btn btn-default" />
+                    </td>
+                </tr>
+            </table>          
+        </div>
+    </form>
+
+    <h5>Courier</h5>
+    <a asp-action="Index" asp-route-state="EnRoute" asp-route-hasterminal="true" asp-route-postMachineId="@ViewData["PostMachineFilter"] " asp-route-haspostmachine="false">Place in post machine</a> |
+    <a asp-action="Index" asp-route-state="WaitsForCourier" asp-route-hasterminal="false" asp-route-postMachineId="@ViewData["PostMachineFilter"]" asp-route-haspostmachine="true">Take from post machine</a>
+
+    <h5>Client</h5>
+    <a asp-action="Index" asp-route-state="Created" asp-route-hasterminal="false" asp-route-postMachineId="@ViewData["PostMachineFilter"]" asp-route-haspostmachine="false">Activate Package</a>
+    |
+    <a asp-action="Index" asp-route-state="Activated" asp-route-hasterminal="false" asp-route-postMachineId="@ViewData["PostMachineFilter"]" asp-route-haspostmachine="false">Place in post machine</a>
+    |
+    <a asp-action="Index" asp-route-state="WaitsForPickup" asp-route-hasterminal="true" asp-route-postMachineId="@ViewData["PostMachineFilter"]" asp-route-haspostmachine="true">Take from post machine</a>
+
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to Full List</a>
 </div>
 
-@{ 
+@{
     string notshow = null;
 }
 
-<form asp-controller="Delivery" asp-action="UpdateStatesAll" method="post">
+<form asp-controller="Delivery" asp-action="UpdateStatesAll" asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]" method="post">
     <table class="table">
         <thead>
             <tr>
@@ -96,23 +137,23 @@
                         {
                             notshow = item.PackageState;
                             <div>
-                                <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Activate package</a>
+                                <a asp-action="UpdateState" asp-route-id="@item.IdPackage" asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]">Activate package</a>
                             </div>
 
                         }
                         else if (item.PackageState.Contains("WaitsForPickup"))
                         {
                             notshow = item.PackageState;
-                            <a asp-action="PinConfirmation" asp-route-id="@item.IdPackage">Withdraw package</a>
+                            <a asp-action="PinConfirmation" asp-route-id="@item.IdPackage"  asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]">Withdraw package</a>
                         }
                         else if (item.PackageState.Contains("Activated"))
                         {
                             notshow = item.PackageState;
-                            <a asp-action="ConfirmDetails" asp-route-id="@item.IdPackage">Place package into post machine</a>
+                            <a asp-action="ConfirmDetails" asp-route-id="@item.IdPackage"  asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]">Place package into post machine</a>
                         }
                         else
                         {
-                            <a asp-action="UpdateState" asp-route-id="@item.IdPackage">Update state</a>
+                            <a asp-action="UpdateState" asp-route-id="@item.IdPackage" asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]">Update state</a>
                         }
 
 
