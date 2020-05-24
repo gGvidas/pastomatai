@@ -527,3 +527,17 @@ C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\
 C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\pastomatai.csproj.CoreCompileInputs.cache
 C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\pastomatai.MvcApplicationPartsAssemblyInfo.cache
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Web.Mvc.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Web.Razor.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Web.Helpers.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Web.WebPages.Deployment.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Web.WebPages.Razor.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Web.WebPages.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\Microsoft.Web.Infrastructure.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+D:\KTUother\6\fuck\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\Delivery\ConfirmDetails.cshtml.g.cs
+D:\KTUother\6\fuck\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\PostMachine\Create.cshtml.g.cs

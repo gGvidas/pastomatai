@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj": {}
+    "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj": {
+    "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj",
+        "projectUniqueName": "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj",
         "projectName": "pastomatai",
-        "projectPath": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj",
-        "packagesPath": "C:\\Users\\Tom\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\obj\\",
+        "projectPath": "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj",
+        "packagesPath": "C:\\Users\\Gvidas\\.nuget\\packages\\",
+        "outputPath": "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gvidas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,14 +98,6 @@
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[3.0.3, 3.0.3]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -116,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
