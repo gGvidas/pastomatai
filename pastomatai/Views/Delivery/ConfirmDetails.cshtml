@@ -35,7 +35,7 @@
     </dl>
 </div>
 
-<form asp-controller="Delivery" asp-action="UpdateStatesAll" method="post">
+<form asp-controller="Delivery" asp-action="UpdateStatesAll" asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]" method="post">
     <input type="hidden" name="IdsToUpdate" id="@Model.IdPackage" value="@Model.IdPackage" />
     <input type="submit" value=" Confirm" /><br>
 </form>

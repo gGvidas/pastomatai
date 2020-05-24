@@ -1,0 +1,22 @@
+@model pastomatai.Models.Package
+
+@{
+    ViewData["Title"] = "PinConfirmation";
+}
+
+<h1>Submit pin</h1>
+
+<div>
+    <form asp-action="PinConfirmation" asp-route-packageId="@Model.IdPackage" method="post">
+        <div class="form-actions no-color">
+            <p>
+                Pin Code: <input type="text" name="Pin" />
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </p>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
