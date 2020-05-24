@@ -20,7 +20,7 @@ namespace pastomatai.Controllers
         }
 
         //GET: Delivery
-        public async Task<IActionResult> Index(string state, bool hasterminal, string terminalId, string postMachineId, bool haspostmachine)
+        public IActionResult Index(string state, bool hasterminal, string terminalId, string postMachineId, bool haspostmachine)
         {
             if (!String.IsNullOrEmpty(terminalId))
             {
@@ -32,7 +32,7 @@ namespace pastomatai.Controllers
                     ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                     ViewBag.PostMachines = GetPostMachineAddressList();
                     ViewData["TerminalFilter"] = terminalId;
-                    return View(await pastomataiContext.ToListAsync());
+                    return View(pastomataiContext);
                 }
                 else if (hasterminal == false)
                 {
@@ -45,7 +45,7 @@ namespace pastomatai.Controllers
                     ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                     ViewBag.PostMachines = GetPostMachineAddressList();
                     ViewData["TerminalFilter"] = terminalId;
-                    return View(await pastomataiContext.ToListAsync());
+                    return View(pastomataiContext);
                 }
                 else
                 {
@@ -59,7 +59,7 @@ namespace pastomatai.Controllers
                     ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                     ViewBag.PostMachines = GetPostMachineAddressList();
                     ViewData["TerminalFilter"] = terminalId;
-                    return View(await pastomataiContext.ToListAsync());
+                    return View(pastomataiContext);
                 }
 
             }
@@ -73,7 +73,7 @@ namespace pastomatai.Controllers
                     ViewData["PostMachineFilter"] = postMachineId;
                     ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                     ViewBag.PostMachines = GetPostMachineAddressList();
-                    return View(await pastomataiContext.ToListAsync());
+                    return View(pastomataiContext);
                 }
                 if (haspostmachine == false)
                 {
@@ -86,7 +86,7 @@ namespace pastomatai.Controllers
                     ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                     ViewBag.PostMachines = GetPostMachineAddressList();
                     ViewData["PostMachineFilter"] = postMachineId;
-                    return View(await pastomataiContext.ToListAsync());
+                    return View(pastomataiContext);
 
                 }
                 else
@@ -101,10 +101,8 @@ namespace pastomatai.Controllers
                     ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                     ViewBag.PostMachines = GetPostMachineAddressList();
                     ViewData["PostMachineFilter"] = postMachineId;
-                    return View(await pastomataiContext.ToListAsync());
+                    return View(pastomataiContext);
                 }
-
-
             }
 
             else
@@ -114,7 +112,7 @@ namespace pastomatai.Controllers
                                 .Include(p => p.FkTerminalidTerminalNavigation);
                 ViewBag.FkTerminalidTerminal = GetTerminalAddressList();
                 ViewBag.PostMachines = GetPostMachineAddressList();
-                return View(await pastomataiContext.ToListAsync());
+                return View(pastomataiContext);
             }
             
 
@@ -123,14 +121,14 @@ namespace pastomatai.Controllers
         
 
         // GET: Delivery/UpdateState/5
-        public async Task<IActionResult> UpdateState(int? id, int currentPostMachine, int currentTerminal)
+        public IActionResult UpdateState(int? id, int currentPostMachine, int currentTerminal)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var package = await _context.Package.FindAsync(id);
+            var package = _context.Package.Find(id);
             if (package == null)
             {
                 return NotFound();
@@ -145,7 +143,7 @@ namespace pastomatai.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateState(int id, int currentPostMachine, int currentTerminal, [Bind("PutInTime,CollectionTime,Size,PackageState,IdPackage,FkLoggedInUseridEndUser,FkTerminalidTerminal,FkEndUseridEndUser")] Package package)
+        public IActionResult UpdateState(int id, int currentPostMachine, int currentTerminal, [Bind("PutInTime,CollectionTime,Size,PackageState,IdPackage,FkLoggedInUseridEndUser,FkTerminalidTerminal,FkEndUseridEndUser")] Package package)
         {
             if (id != package.IdPackage)
             {
@@ -204,7 +202,7 @@ namespace pastomatai.Controllers
                     }                   
 
                     _context.Update(package);
-                        await _context.SaveChangesAsync();
+                        _context.SaveChanges();
                     }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -258,7 +256,6 @@ namespace pastomatai.Controllers
                 else if (package.PackageState.Contains("EnRoute") && !package.FkTerminalidTerminal.HasValue)
                 {
                     package.PackageState = "InTerminal";
-                    // TODO: package is into terminal with id = 20 <-- change it later
                     package.FkTerminalidTerminal = currentTerminal;
                 }
 
@@ -270,14 +267,14 @@ namespace pastomatai.Controllers
         }
 
         
-        public async Task<IActionResult> ConfirmDetails(int? id, int currentPostMachine, int currentTerminal)
+        public IActionResult ConfirmDetails(int? id, int currentPostMachine, int currentTerminal)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var package = await _context.Package.FindAsync(id);
+            var package = _context.Package.Find(id);
             if (package == null)
             {
                 return NotFound();
@@ -287,17 +284,17 @@ namespace pastomatai.Controllers
             ViewData["FkTerminalidTerminal"] = new SelectList(_context.Terminal, "IdTerminal", "PhoneNumber", package.FkTerminalidTerminal);
             ViewData["PostMachineFilter"] = currentPostMachine;
             ViewData["TerminalFilter"] = currentTerminal;
-            return View(package);
+            return RedirectToAction("Index", package);
         }
 
         [HttpGet]
-        public async Task<IActionResult> PinConfirmation(int? id, int currentPostMachine, int currentTerminal)
+        public IActionResult PinConfirmation(int? id, int currentPostMachine, int currentTerminal)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var package = await _context.Package.FindAsync(id);
+            var package = _context.Package.Find(id);
 
             if (package == null)
             {
@@ -308,7 +305,7 @@ namespace pastomatai.Controllers
             {
                 return NotFound();
             }
-            package.PostMachineBox = await _context.PostMachineBox.FindAsync(pmbId);
+            package.PostMachineBox = _context.PostMachineBox.Find(pmbId);
             ViewData["FkEndUseridEndUser"] = new SelectList(_context.EndUser, "IdEndUser", "PhoneNumber", package.FkEndUseridEndUser);
             ViewData["FkLoggedInUseridEndUser"] = new SelectList(_context.LoggedInUser, "IdEndUser", "Email", package.FkLoggedInUseridEndUser);
             ViewData["FkTerminalidTerminal"] = new SelectList(_context.Terminal, "IdTerminal", "PhoneNumber", package.FkTerminalidTerminal);
@@ -330,20 +327,20 @@ namespace pastomatai.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PinConfirmation(int? packageId, string pin, int currentPostMachine, int currentTerminal)
+        public IActionResult PinConfirmation(int? packageId, string pin, int currentPostMachine, int currentTerminal)
         {
             if (packageId == null)
             {
                 return NotFound();
             }
-            var package = await _context.Package.FindAsync(packageId);
+            var package = _context.Package.Find(packageId);
 
             int pmbId = getPostMachineId(package);
             if (pmbId == -1)
             {
                 return NotFound();
             }
-            package.PostMachineBox = await _context.PostMachineBox.FindAsync(pmbId);
+            package.PostMachineBox = _context.PostMachineBox.Find(pmbId);
             var correct = checkPin(package, pin);
             if (correct == true)
             {
@@ -355,7 +352,7 @@ namespace pastomatai.Controllers
                         { package.PackageState = "Delivered"; }
 
                         _context.Update(package);
-                        await _context.SaveChangesAsync();
+                        _context.SaveChanges();
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -385,22 +382,7 @@ namespace pastomatai.Controllers
 
         private SelectList GetTerminalAddressList()
         {
-            SelectList temp =
-               new SelectList((from s in _context.Address.ToList().Where(s => s.Terminal != null)
-                               select new
-                               {
-                                   IdAddress = s.IdAddress,
-                                   Adress = "id " + s.IdAddress + " - " + s.Street + " " + s.HouseNumber + ", " + s.City + " " + s.ZipCode
-                               }),
-                   "IdAddress",
-                   "Adress",
-                   null);
-            return temp;
-        }
-
-        private SelectList GetPostMachineAddressList()
-        {
-            var tmp = GetAddressIds();
+            var tmp = GetTerminalAddressIds();
             SelectList temp =
                new SelectList((from s in _context.Address.ToList().Where(s => tmp.Contains(s.IdAddress) == true)
                                select new
@@ -414,13 +396,39 @@ namespace pastomatai.Controllers
             return temp;
         }
 
-        private List<int> GetAddressIds()
+        private SelectList GetPostMachineAddressList()
+        {
+            var tmp = GetPostmachineAddressIds();
+            SelectList temp =
+               new SelectList((from s in _context.Address.ToList().Where(s => tmp.Contains(s.IdAddress) == true)
+                               select new
+                               {
+                                   IdAddress = s.IdAddress,
+                                   Adress = "id " + s.IdAddress + " - " + s.Street + " " + s.HouseNumber + ", " + s.City + " " + s.ZipCode
+                               }),
+                   "IdAddress",
+                   "Adress",
+                   null);
+            return temp;
+        }
+
+        private List<int> GetPostmachineAddressIds()
         {
             var newList = new List<int>();
             var postmachines = _context.PostMachine;
             foreach (PostMachine postmachine in postmachines)
             {
                 newList.Add(postmachine.FkAddressidAddress);
+            }
+            return newList;
+        }
+        private List<int> GetTerminalAddressIds()
+        {
+            var newList = new List<int>();
+            var terminals = _context.Terminal;
+            foreach (Terminal terminal in terminals)
+            {
+                newList.Add(terminal.FkAddressidAddress);
             }
             return newList;
         }
