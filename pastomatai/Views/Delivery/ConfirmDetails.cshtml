@@ -1,0 +1,48 @@
+﻿@model pastomatai.Models.Package
+
+@{
+    ViewData["Title"] = "ConfirmDetails";
+}
+
+<h1>ConfirmDetails</h1>
+
+<h5> Are these details correct?</h5>
+
+<div>
+    <h4>Package</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReceiversNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReceiversNumber)
+        </dd>
+
+    </dl>
+</div>
+
+<form asp-controller="Delivery" asp-action="UpdateStatesAll" asp-route-currentPostMachine="@ViewData["PostMachineFilter"]" asp-route-currentTerminal="@ViewData["TerminalFilter"]" method="post">
+    <input type="hidden" name="IdsToUpdate" id="@Model.IdPackage" value="@Model.IdPackage" />
+    <input type="submit" value=" Confirm" /><br>
+</form>
+<div>
+
+    <a asp-controller="Packages" asp-action="Edit" asp-route-id="@Model.IdPackage">Edit</a>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

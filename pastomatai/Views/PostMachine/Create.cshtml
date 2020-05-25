@@ -1,0 +1,55 @@
+﻿@model pastomatai.Models.PostMachine
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PostMachine</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TurnedOn" /> @Html.DisplayNameFor(model => model.TurnedOn)
+                </label>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="PostMachineState" class="control-label"></label>
+                <input asp-for="PostMachineState" class="form-control" />
+                <span asp-validation-for="PostMachineState" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="IdPostMachine" class="control-label"></label>
+                <input asp-for="IdPostMachine" class="form-control" />
+                <span asp-validation-for="IdPostMachine" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="FkLoggedInUseridEndUser" class="control-label">User_1:</label>
+                <select asp-for="FkLoggedInUseridEndUser" class ="form-control" asp-items="ViewBag.FkLoggedInUseridEndUser"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkLoggedInUseridEndUser1" class="control-label">User_2:</label>
+                <select asp-for="FkLoggedInUseridEndUser1" class ="form-control" asp-items="ViewBag.FkLoggedInUseridEndUser1"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkAddressidAddress" class="control-label">PostMachine Address:</label>
+                <select asp-for="FkAddressidAddress" class ="form-control" asp-items="ViewBag.FkAddressidAddress"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

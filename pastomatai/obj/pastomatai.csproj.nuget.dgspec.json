@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj": {}
+    "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj": {}
   },
   "projects": {
-    "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj": {
+    "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj",
+        "projectUniqueName": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj",
         "projectName": "pastomatai",
-        "projectPath": "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\pastomatai.csproj",
-        "packagesPath": "C:\\Users\\Gvidas\\.nuget\\packages\\",
-        "outputPath": "D:\\KTUother\\6\\fuck\\pastomatai\\pastomatai\\obj\\",
+        "projectPath": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj",
+        "packagesPath": "C:\\Users\\imsow\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Gvidas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\imsow\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +38,22 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.ViewFeatures": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.3, )"
@@ -86,6 +99,14 @@
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
