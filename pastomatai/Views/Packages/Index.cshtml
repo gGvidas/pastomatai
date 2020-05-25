@@ -76,9 +76,16 @@
                 @Html.DisplayFor(modelItem => item.FkTerminalidTerminalNavigation.PhoneNumber)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPackage">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPackage">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPackage">Delete</a>
+                @if (item.PackageState.Contains("Created"))
+                {
+                    <a asp-action="Delete" asp-route-id="@item.IdPackage">Delete</a>
+                    <a asp-action="" asp-route-id="@item.IdPackage">Activate</a>
+                }
+                @if (item.PackageState.Contains("Activated"))
+                {
+                    <a asp-action="" asp-route-id="@item.IdPackage">Print Barcode</a>
+                }
+                
             </td>
         </tr>
 }

@@ -9688,19 +9688,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\imsow\\.nuget\\packages\\": {}
+    "C:\\Users\\kazar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj",
+      "projectUniqueName": "C:\\Users\\kazar\\Documents\\pastomatai\\pastomatai\\pastomatai.csproj",
       "projectName": "pastomatai",
-      "projectPath": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\pastomatai.csproj",
-      "packagesPath": "C:\\Users\\imsow\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\imsow\\Documents\\T120B029\\goo\\pastomatai\\pastomatai\\obj\\",
+      "projectPath": "C:\\Users\\kazar\\Documents\\pastomatai\\pastomatai\\pastomatai.csproj",
+      "packagesPath": "C:\\Users\\kazar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kazar\\Documents\\pastomatai\\pastomatai\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\imsow\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
