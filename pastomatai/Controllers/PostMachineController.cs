@@ -41,7 +41,7 @@ namespace pastomatai.Controllers
         {
             ViewData["FkAddressidAddress"] = GetAddressList();
             ViewData["FkLoggedInUseridEndUser"] = GetUseridEndUser("Courier");
-            ViewData["FkLoggedInUseridEndUser1"] = GetUseridEndUser("Admin");
+            ViewData["FkLoggedInUseridEndUser1"] = GetUseridEndUser("Worker");
 
             return View();
         }
@@ -53,7 +53,7 @@ namespace pastomatai.Controllers
             if (ModelState.IsValid)
             {
                 package.TurnedOn = false;
-                package.PostMachineState = "FFFFF";
+                package.PostMachineState = "WaitsForMaintenance";
                 int id = context.PostMachine.Max(p => p.IdPostMachine) + 1;
                 package.IdPostMachine = id;
                 context.Add(package);
@@ -62,10 +62,74 @@ namespace pastomatai.Controllers
             }
             ViewData["FkAddressidAddress"] = GetAddressList();
             ViewData["FkLoggedInUseridEndUser"] = GetUseridEndUser("Courier");
-            ViewData["FkLoggedInUseridEndUser1"] = GetUseridEndUser("Admin");
+            ViewData["FkLoggedInUseridEndUser1"] = GetUseridEndUser("Worker");
 
             return View(package);
         }
+
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            PostMachine postMachine = context.PostMachine.Single(emp => emp.IdPostMachine == id);
+            ViewData["FkAddressidAddress"] = GetAddressList();
+            ViewData["FkLoggedInUseridEndUser"] = GetUseridEndUser("Courier");
+            ViewData["FkLoggedInUseridEndUser1"] = GetUseridEndUser("Worker");
+
+            return View(postMachine);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(PostMachine postMachine)
+        {
+
+            if (ModelState.IsValid)
+            {
+                context.Update(postMachine);
+                context.SaveChangesAsync(); // not async works
+                return RedirectToAction(nameof(Index));
+            }
+            return View(postMachine);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            //PostMachine postMachine = context.PostMachine.Single(emp => emp.IdPostMachine == id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var package = await context.PostMachine
+                .Include(p => p.FkAddressidAddressNavigation)
+                .Include(p => p.FkLoggedInUseridEndUserNavigation)
+                .Include(p => p.FkAddressidAddressNavigation)
+                .FirstOrDefaultAsync(m => m.IdPostMachine == id);
+            if (package == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(package);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var package = await context.PostMachine.FindAsync(id);
+
+            context.PostMachine.Remove(package);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
+            //context.Remove(postMachine);
+            //context.SaveChangesAsync(); // not async works
+            //return RedirectToAction(nameof(Index));
+        }
+
         private SelectList GetUseridEndUser(string role)
         {
             SelectList temp = new SelectList((from s in context.LoggedInUser.Where(s => s.Role == role).ToList()

@@ -1,0 +1,30 @@
+﻿@model pastomatai.Models.EndUser
+
+@{
+    ViewData["Title"] = "LoginForm";
+}
+
+<h1>LoginForm</h1>
+
+<div>
+    <h4>EndUser</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkAddressidAddressNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkAddressidAddressNavigation.City)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdEndUser">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

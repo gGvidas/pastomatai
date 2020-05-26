@@ -9688,19 +9688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kazar\\.nuget\\packages\\": {}
+    "C:\\Users\\Tom\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kazar\\Documents\\pastomatai\\pastomatai\\pastomatai.csproj",
+      "projectUniqueName": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj",
       "projectName": "pastomatai",
-      "projectPath": "C:\\Users\\kazar\\Documents\\pastomatai\\pastomatai\\pastomatai.csproj",
-      "packagesPath": "C:\\Users\\kazar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kazar\\Documents\\pastomatai\\pastomatai\\obj\\",
+      "projectPath": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\pastomatai.csproj",
+      "packagesPath": "C:\\Users\\Tom\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tom\\Source\\Repos\\gGvidas\\pastomatai\\pastomatai\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\kazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tom\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

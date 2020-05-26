@@ -1,0 +1,67 @@
+﻿@model pastomatai.Models.PostMachine
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PostMachine</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TurnedOn" /> @Html.DisplayNameFor(model => model.TurnedOn)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostMachineState" class="control-label">PostMachine State: </label>
+                @*<input asp-for="PostMachineState" class="form-control" />*@
+                @Html.DropDownList("PostMachineState", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text = "Operating", Value ="Operating"},
+                        new SelectListItem{ Text = "WaitsForMaintenance", Value ="WaitsForMaintenance"},
+                   }, "Select State")
+                <br>
+                @*<select asp-for="FkLoggedInUseridEndUser1" class="form-control" asp-items="ViewBag.FkLoggedInUseridEndUser1"></select>*@
+                <span asp-validation-for="PostMachineState" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="IdPostMachine" />
+            <div class="form-group">
+                <label asp-for="FkLoggedInUseridEndUser" class="control-label">Courier:</label>
+                <select asp-for="FkLoggedInUseridEndUser" class="form-control" asp-items="ViewBag.FkLoggedInUseridEndUser"></select>
+                @Html.DisplayTextFor(model => model.FkLoggedInUseridEndUser)
+                @*<input asp-for="FkLoggedInUseridEndUser" class="form-control" />*@
+                <span asp-validation-for="FkLoggedInUseridEndUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkLoggedInUseridEndUser1" class="control-label">Worker:</label>
+                <select asp-for="FkLoggedInUseridEndUser1" class="form-control" asp-items="ViewBag.FkLoggedInUseridEndUser1"></select>
+                @Html.DisplayTextFor(model => model.FkLoggedInUseridEndUser1)
+                @*<input asp-for="FkLoggedInUseridEndUser1" class="form-control" />*@
+                <span asp-validation-for="FkLoggedInUseridEndUser1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkAddressidAddress" class="control-label">Adress:</label>
+                <select asp-for="FkAddressidAddress" class="form-control" asp-items="ViewBag.FkAddressidAddress"></select>
+                @Html.DisplayTextFor(model => model.FkAddressidAddress)
+                @*<input asp-for="FkAddressidAddress" class="form-control" />*@
+                <span asp-validation-for="FkAddressidAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

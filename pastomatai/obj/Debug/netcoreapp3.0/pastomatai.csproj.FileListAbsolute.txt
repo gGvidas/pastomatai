@@ -729,3 +729,11 @@ C:\Users\kazar\Documents\pastomatai\pastomatai\bin\Debug\netcoreapp3.0\runtimes\
 C:\Users\kazar\Documents\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\Delivery\ConfirmDetails.cshtml.g.cs
 C:\Users\kazar\Documents\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\Delivery\PinConfirmation.cshtml.g.cs
 C:\Users\kazar\Documents\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\PostMachine\Create.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\Delivery\ConfirmDetails.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\Delivery\PinConfirmation.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\PostMachine\Edit.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\PostMachine\Delete.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\User\LoginForm.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\User\Logout.cshtml.g.cs
+C:\Users\Tom\Source\Repos\gGvidas\pastomatai\pastomatai\obj\Debug\netcoreapp3.0\Razor\Views\User\RegisterForm.cshtml.g.cs
